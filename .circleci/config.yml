@@ -43,7 +43,7 @@ workflows:
           image-tar: image.tar
           vuln-thresh: high
           comp-thresh: critical
-          only-fixed: true
+          only-fixed: false
       - docker-push:
           requires:
             - twistcli/scan-image
