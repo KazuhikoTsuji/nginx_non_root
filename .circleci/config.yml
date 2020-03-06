@@ -10,6 +10,7 @@ jobs:
     working_directory: ~/workdir
     steps:
       - checkout
+      - setup_remote_docker
       - run: 'docker build -t $MYREPO/$MYIMAGE:$TAG .'
       - run: mkdir -p workspace
       - run: 'docker save $MYREPO/$MYIMAGE:$TAG -o workspace/image.tar'
@@ -25,6 +26,7 @@ jobs:
     working_directory: ~/workdir
     steps:
       - checkout
+      - setup_remote_docker
       - attach_workspace:
           at: workspace
       - run:
