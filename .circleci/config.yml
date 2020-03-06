@@ -5,8 +5,6 @@ jobs:
   docker-build:
     docker:
       - image: circleci/node:10.19.0-stretch
-    environment:
-      TAG: '01'
     working_directory: ~/workdir
     steps:
       - checkout
@@ -21,8 +19,6 @@ jobs:
   docker-push:
     docker:
       - image: circleci/node:10.19.0-stretch
-    environment:
-      TAG: '01'
     working_directory: ~/workdir
     steps:
       - checkout
@@ -43,7 +39,7 @@ workflows:
           requires:
             - docker-build
           context: tl_scan_context
-          image: '$MYREPO/$MYIMAGE:01'
+          image: '$MYREPO/$MYIMAGE:$TAG'
           image-tar: image.tar
           vuln-thresh: high
           comp-thresh: critical
