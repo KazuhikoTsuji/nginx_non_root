@@ -1,11 +1,12 @@
 version: 2.1
 orbs:
   twistcli: twistlock/twistcli-scan@1.0.5
-environment:
-  TAG='01'
 jobs:
   docker-build:
-    executor: twistcli/default
+      - image: circleci/node:10.19.0-stretch
+    environment:
+      TAG: '01'
+    working_directory: ~/workdir
     steps:
       - checkout
       - run: 'docker build -t $MYREPO/$MYIMAGE:$TAG .'
@@ -16,7 +17,10 @@ jobs:
           paths:
             - image.tar
   docker-push:
-    executor: twistcli/default
+      - image: circleci/node:10.19.0-stretch
+    environment:
+      TAG: '01'
+    working_directory: ~/workdir
     steps:
       - checkout
       - attach_workspace:
