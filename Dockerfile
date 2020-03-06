@@ -1,6 +1,6 @@
-FROM alpine:3.11.3
+FROM alpine:3.8
 
-RUN apk add nginx && rm -rf /var/cache/apk/*
+RUN apk add --update nginx && rm -rf /var/cache/apk/*
 
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY index.html /usr/share/nginx/html/index.html
