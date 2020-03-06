@@ -43,7 +43,7 @@ workflows:
           requires:
             - docker-build
           context: tl_scan_context
-          image: '$MYREPO/$MYIMAGE:$TAG'
+          image: '$MYREPO/$MYIMAGE:01'
           image-tar: image.tar
           vuln-thresh: high
           comp-thresh: critical
